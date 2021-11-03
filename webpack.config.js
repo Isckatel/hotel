@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');//для сервера
-
 // Для работы с html файлами и шаблонами, также понадобится для работы с pug.
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//отдельный файл css
+const miniCss = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -30,6 +31,9 @@ module.exports = {
 		title: 'Webpack app',
 		template: './src/index.pug'
 		}),
+		new miniCss({
+			filename: './style.css',
+		}),
 		// применять изменения только при горячей перезагрузке
         new webpack.HotModuleReplacementPlugin(),
 	],
@@ -47,7 +51,7 @@ module.exports = {
 			//scss
 			{
 				test: /\.scss$/,
-				use: ["style-loader", "css-loader", "sass-loader"],
+				use: [miniCss.loader, "css-loader", "sass-loader"],
 			},
 			// image
 			{

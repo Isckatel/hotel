@@ -1,9 +1,6 @@
-.button {
+%basic {
     min-width: 99px;
     min-height: 44px;
-    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-    border: none;
-    border-radius: 22px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -14,12 +11,19 @@
     color: #FFFFFF;
 }
 
-button:active, button:focus {
-    outline: none;
-  }
-
-button:hover {
+.button {
+    @extend   %basic;
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-    opacity: 0.5;
-    cursor: pointer;
+    border: none;
+    border-radius: 22px;    
+
+    &:active,focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+        opacity: 0.5;
+        cursor: pointer;  
+    }
 }
